@@ -1,6 +1,48 @@
 ---
 import { Image } from 'astro:assets';
 import terraIcon from '@/assets/terra.svg';
+import { Combobox } from './ui/Combobox';
+
+const response = await fetch(`https://madoguchi.fyralabs.com/api/repos`)
+const data = await response.json() as MadoguchiRepos[];
+
+function parseRepos(data: MadoguchiRepos[]): CbValue[] {
+    let versions: CbValue[] = [];
+
+    data.forEach((repo) => {
+        const name = repo.name.split("terra")[1];
+
+        versions.push({
+            label: `Terra ${name}`,
+            value: name,
+        })
+    })
+
+    // FIXME: This function is kinda a mess, check the sorter code later
+    let maxVersion: number = 0;
+    versions.sort((a, b) => {
+        if ((!Number.isNaN(parseInt(a.value))) && (!Number.isNaN(parseInt(b.value)))) {
+            let intA = parseInt(a.value);
+            let intB = parseInt(b.value);
+
+            // check max version to assign rawhide
+            if (intA > maxVersion) maxVersion = intA;
+            if (intB > maxVersion) maxVersion = intB;
+
+            return intB - intA;
+        } else if ((!Number.isNaN(parseInt(a.value)))) {
+            return -maxVersion;
+        } else if (a.value == "rawhide" || b.value == "rawhide") {
+            return -maxVersion - 1;
+        }
+    
+        return 0;
+    })
+
+    return versions;
+}
+
+const versions = parseRepos(data);
 ---
 
 <header class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -14,6 +56,33 @@ import terraIcon from '@/assets/terra.svg';
                 />
                 <span class="font-bold">Terra <span class="font-normal">Hub</span></span>
               </a>
+              <div class="hidden sm:block ml-auto">
+                <div class="flex space-x-4">
+                    <Combobox client:load values={versions}></Combobox>
+                  <!-- {navigation.map((item) => (
+                    <a
+                      key={item.name}
+                      href={item.href}
+                      className={classNames(
+                        item.href === normalizedPathname
+                          ? "bg-zinc-700 text-white"
+                          : "hover:bg-zinc-800 hover:text-white",
+                        item.href !== normalizedPathname
+                          ? forceDark
+                            ? "text-gray-300"
+                            : "text-gray-800 dark:text-gray-300"
+                          : "",
+                        "px-3 py-2 rounded-md text-sm font-medium transition-all",
+                      )}
+                      aria-current={
+                        item.href === normalizedPathname ? "page" : undefined
+                      }
+                    >
+                      {item.name}
+                    </a>
+                  ))} -->
+                </div>
+              </div>
         </div>
     </div>
 </header>
