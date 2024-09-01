@@ -1,0 +1,19 @@
+---
+import { Image } from 'astro:assets';
+import terraIcon from '@/assets/terra.svg';
+---
+
+<header class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+    <div class="relative flex h-16 items-center justify-between">
+        <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+            <a class="flex flex-shrink-0 items-center" href="/">
+                <Image
+                  class="block h-14 w-auto drop-shadow-xl"
+                  src={terraIcon}
+                  alt="Fyra Labs"
+                />
+                <span class="font-bold">Terra <span class="font-normal">Hub</span></span>
+              </a>
+        </div>
+    </div>
+</header>
