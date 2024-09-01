@@ -9,5 +9,6 @@ export default defineConfig({
     tailwind({
       applyBaseStyles: false,
     })
-  ]
+  ],
+  output: 'server' // This site mostly fetches data from gura
 });
