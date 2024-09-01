@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@astrojs/check':
         specifier: ^0.9.3
-        version: 0.9.3(typescript@5.5.4)
+        version: 0.9.3(prettier@2.8.7)(typescript@5.5.4)
       '@astrojs/react':
         specifier: ^3.6.2
         version: 3.6.2(@types/react-dom@18.3.0)(@types/react@18.3.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(vite@5.4.2)
@@ -44,6 +44,9 @@ importers:
       react-dom:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
+      sharp:
+        specifier: ^0.33.5
+        version: 0.33.5
       tailwind-merge:
         specifier: ^2.5.2
         version: 2.5.2
@@ -2212,9 +2215,9 @@ snapshots:
       '@jridgewell/gen-mapping': 0.3.5
       '@jridgewell/trace-mapping': 0.3.25
 
-  '@astrojs/check@0.9.3(typescript@5.5.4)':
+  '@astrojs/check@0.9.3(prettier@2.8.7)(typescript@5.5.4)':
     dependencies:
-      '@astrojs/language-server': 2.14.1(typescript@5.5.4)
+      '@astrojs/language-server': 2.14.1(prettier@2.8.7)(typescript@5.5.4)
       chokidar: 3.6.0
       fast-glob: 3.3.2
       kleur: 4.1.5
@@ -2228,7 +2231,7 @@ snapshots:
 
   '@astrojs/internal-helpers@0.4.1': {}
 
-  '@astrojs/language-server@2.14.1(typescript@5.5.4)':
+  '@astrojs/language-server@2.14.1(prettier@2.8.7)(typescript@5.5.4)':
     dependencies:
       '@astrojs/compiler': 2.10.3
       '@astrojs/yaml2ts': 0.2.1
@@ -2243,12 +2246,14 @@ snapshots:
       volar-service-css: 0.0.61(@volar/language-service@2.4.1)
       volar-service-emmet: 0.0.61(@volar/language-service@2.4.1)
       volar-service-html: 0.0.61(@volar/language-service@2.4.1)
-      volar-service-prettier: 0.0.61(@volar/language-service@2.4.1)
+      volar-service-prettier: 0.0.61(@volar/language-service@2.4.1)(prettier@2.8.7)
       volar-service-typescript: 0.0.61(@volar/language-service@2.4.1)
       volar-service-typescript-twoslash-queries: 0.0.61(@volar/language-service@2.4.1)
       volar-service-yaml: 0.0.61(@volar/language-service@2.4.1)
       vscode-html-languageservice: 5.3.1
       vscode-uri: 3.0.8
+    optionalDependencies:
+      prettier: 2.8.7
     transitivePeerDependencies:
       - typescript
 
@@ -3108,13 +3113,11 @@ snapshots:
     dependencies:
       color-name: 1.1.4
       simple-swizzle: 0.2.2
-    optional: true
 
   color@4.2.3:
     dependencies:
       color-convert: 2.0.1
       color-string: 1.9.1
-    optional: true
 
   comma-separated-tokens@2.0.3: {}
 
@@ -3146,8 +3149,7 @@ snapshots:
 
   dequal@2.0.3: {}
 
-  detect-libc@2.0.3:
-    optional: true
+  detect-libc@2.0.3: {}
 
   deterministic-object-hash@2.0.2:
     dependencies:
@@ -3417,8 +3419,7 @@ snapshots:
 
   import-meta-resolve@4.1.0: {}
 
-  is-arrayish@0.3.2:
-    optional: true
+  is-arrayish@0.3.2: {}
 
   is-binary-path@2.1.0:
     dependencies:
@@ -4236,7 +4237,6 @@ snapshots:
       '@img/sharp-wasm32': 0.33.5
       '@img/sharp-win32-ia32': 0.33.5
       '@img/sharp-win32-x64': 0.33.5
-    optional: true
 
   shebang-command@2.0.0:
     dependencies:
@@ -4254,7 +4254,6 @@ snapshots:
   simple-swizzle@0.2.2:
     dependencies:
       is-arrayish: 0.3.2
-    optional: true
 
   sisteransi@1.0.5: {}
 
@@ -4503,11 +4502,12 @@ snapshots:
     optionalDependencies:
       '@volar/language-service': 2.4.1
 
-  volar-service-prettier@0.0.61(@volar/language-service@2.4.1):
+  volar-service-prettier@0.0.61(@volar/language-service@2.4.1)(prettier@2.8.7):
     dependencies:
       vscode-uri: 3.0.8
     optionalDependencies:
       '@volar/language-service': 2.4.1
+      prettier: 2.8.7
 
   volar-service-typescript-twoslash-queries@0.0.61(@volar/language-service@2.4.1):
     dependencies:
