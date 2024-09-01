@@ -2,6 +2,8 @@ import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
 
+import cloudflare from '@astrojs/cloudflare';
+
 // https://astro.build/config
 export default defineConfig({
   integrations: [
@@ -10,5 +12,9 @@ export default defineConfig({
       applyBaseStyles: false,
     })
   ],
-  output: 'server' // This site mostly fetches data from gura
+
+  // This site mostly fetches data from gura
+  output: 'server',
+
+  adapter: cloudflare()
 });
