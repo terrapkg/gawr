@@ -8,7 +8,7 @@ export interface Props {
 const { title, className = "", style = "" } = Astro.props;
 ---
 
-<div class={`card-component ${className}`} style={style}>
+<div class={`card-component ${className} dark:bg-zinc-950 bg-sky-50`} style={style}>
   <div class="card-title">
     {title}
   </div>
@@ -22,7 +22,6 @@ const { title, className = "", style = "" } = Astro.props;
   @apply p-6 text-inherit box-border;
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 14px;
-  background: #151515;
   font-family: 'Inter', 'Inter Regular', sans-serif;
 }
 .card-title {

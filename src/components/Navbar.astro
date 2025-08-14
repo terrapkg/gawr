@@ -68,35 +68,13 @@ function parseRepos(data: MadoguchiRepos[]): CbValue[] {
                   loading="eager"
                 />
                 <span class="font-bold">Terra <span class="font-normal">Hub</span></span>
-              </a>
-              <div class="hidden sm:block ml-auto">
-                <div class="flex space-x-4">
+            </a>
+            <div class="hidden sm:block ml-auto place-items-stretch items-center">
+                <div class="flex space-x-4 items-center h-full">
                     <Combobox client:load values={versions}></Combobox>
-                  <!-- {navigation.map((item) => (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      className={classNames(
-                        item.href === normalizedPathname
-                          ? "bg-zinc-700 text-white"
-                          : "hover:bg-zinc-800 hover:text-white",
-                        item.href !== normalizedPathname
-                          ? forceDark
-                            ? "text-gray-300"
-                            : "text-gray-800 dark:text-gray-300"
-                          : "",
-                        "px-3 py-2 rounded-md text-sm font-medium transition-all",
-                      )}
-                      aria-current={
-                        item.href === normalizedPathname ? "page" : undefined
-                      }
-                    >
-                      {item.name}
-                    </a>
-                  ))} -->
-                <DarkModeToggle client:load />
+                    <DarkModeToggle client:load />
                 </div>
-              </div>
+            </div>
         </div>
     </div>
 </header>

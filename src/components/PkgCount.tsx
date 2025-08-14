@@ -15,6 +15,6 @@ export function PkgCount() {
   }, []);
 
   return (
-    <span className="text-blue-300">{pkgcount}</span>
+    <span className="dark:text-blue-300 text-blue-500">{pkgcount}</span>
   );
 }
