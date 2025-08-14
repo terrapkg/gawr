@@ -1,4 +1,5 @@
 import * as React from "react";
+import { SearchIcon } from "./icons/SearchIcon";
 
 export interface SearchBarProps {
   value?: string;
@@ -68,18 +69,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
             setTimeout(() => inputRef.current?.focus(), 100);
           }}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-            className="size-7 text-gray-400 dark:text-gray-300"
-          >
-            <path
-              fillRule="evenodd"
-              d="M9 3.5a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11ZM2 9a7 7 0 1 1 12.452 4.391l3.328 3.329a.75.75 0 1 1-1.06 1.06l-3.329-3.328A7 7 0 0 1 2 9Z"
-              clipRule="evenodd"
-            />
-          </svg>
+          <SearchIcon className="size-7 text-gray-400 dark:text-gray-300" />
         </button>
       )}
       {/* Search input: always on desktop, or expanded on mobile */}
@@ -111,19 +101,8 @@ export const SearchBar: React.FC<SearchBarProps> = ({
             }}
           />
           {/* Icon and helper text for input */}
-          <span className="absolute left-4 sm:left-3 top-1/2 transform -translate-y-1/2 pointer-events-none text-gray-400 dark:text-gray-300">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-              className="size-7 sm:size-5"
-            >
-              <path
-                fillRule="evenodd"
-                d="M9 3.5a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11ZM2 9a7 7 0 1 1 12.452 4.391l3.328 3.329a.75.75 0 1 1-1.06 1.06l-3.329-3.328A7 7 0 0 1 2 9Z"
-                clipRule="evenodd"
-              />
-            </svg>
+          <span className="absolute left-4 sm:left-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
+            <SearchIcon className="size-7 sm:size-5 text-gray-400 dark:text-gray-300" />
           </span>
           <p className="absolute right-4 sm:right-3 top-1/2 transform -translate-y-1/2 pointer-events-none text-gray-400 hidden sm:block text-lg sm:text-base">
             Ctrl+K
