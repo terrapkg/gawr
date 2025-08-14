@@ -1,18 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
-
-const pkgcount = 1000;
-
+import { PkgCount } from '../components/PkgCount.tsx';
 ---
 
 <Layout title="Terra Hub">
 	<main>
-		
 		<h1>Welcome to Terra</h1>
-		<p>
-		The {pkgcount} packages Fedora doesn’t ship.
-		</p>
+		<h2 class="text-4xl text-center">
+			The <PkgCount client:load /> packages Fedora doesn’t ship.
+		</h2>
 		<p class="instructions">
 			To get started, open the directory <code>src/pages</code> in your project.<br />
 			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
@@ -66,14 +63,14 @@ const pkgcount = 1000;
 		font-weight: 700;
 		line-height: 1;
 		text-align: center;
-		margin-bottom: 1em;
+		margin-bottom: .7em;
 	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
+	h2 {
+		font-size: 2rem;
+		font-weight: 700;
+		line-height: 1;
+		text-align: center;
+		margin-bottom: .5em;
 	}
 	.instructions {
 		margin-bottom: 2rem;
