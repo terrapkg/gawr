@@ -7,7 +7,7 @@ import { SearchBar } from './ui/SearchBar';
 import { getVersions } from "../lib/versions";
 
 export interface Props {
-  search?: string;
+  search?: boolean;
 }
 
 const { search } = Astro.props;
@@ -30,11 +30,14 @@ let versions: CbValue[] = await getVersions();
             </a>
             <!-- Centered SearchBar component -->
             <div class="sm:flex-1 sm:flex sm:justify-center items-center px-4">
-                <SearchBar value={search} client:only="react" />
+                {(search ?? true) && <SearchBar client:only="react" />}
             </div>
             <div class="flex ml-auto place-items-stretch items-center">
                 <div class="flex space-x-4 items-center h-full">
-                    <Combobox client:load values={versions} defaultValue={1} group='versions' />
+                    <a href="https://developer.fyralabs.com/terra/" class="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 font-medium px-1 sm:px-3 py-1.5 sm:py-2 transition-colors">Docs</a>
+                    <a href="https://github.com/terrapkg/packages/" class="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 font-medium px-1 sm:px-3 py-1.5 sm:py-2 transition-colors">Sources</a>
+                    <a href="https://wiki.ultramarine-linux.org/en/community/community/" class="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 font-medium px-1 sm:px-3 py-1.5 sm:py-2 transition-colors">Community</a>
+
                     <DarkModeToggle client:load />
                 </div>
             </div>

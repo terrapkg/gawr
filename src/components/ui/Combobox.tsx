@@ -17,13 +17,20 @@ export function Combobox({
   values,
   defaultValue,
   group,
+  onChange,
 }: {
   values: CbValue[];
   defaultValue?: number;
   group: string;
+  onChange?: (value: string) => void;
 }) {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState(values[defaultValue ?? 0].value);
+  
+  React.useEffect(() => {
+    if (onChange) onChange(value);
+  }, [value, onChange]);
+
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>

@@ -7,11 +7,13 @@ export interface SearchBarProps {
   placeholder?: string;
   className?: string;
   autoFocus?: boolean;
+  onEnter?: () => void;
 }
 
 export const SearchBar: React.FC<SearchBarProps> = ({
   value,
   onChange,
+  onEnter,
   placeholder = "Search…",
   className = "",
   autoFocus = false,
@@ -57,7 +59,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
 
   // Responsive: show button on mobile, input on desktop or when expanded
   return (
-    <div className="relative w-full max-w-md">
+    <div className={`relative w-full max-w-md ${className}`}>
       {/* Mobile button */}
       {!expanded && !isDesktop && (
         <button
@@ -85,9 +87,13 @@ export const SearchBar: React.FC<SearchBarProps> = ({
             aria-label={placeholder}
             onKeyDown={(e) => {
               if (e.key === "Enter") {
-                window.location.href = `/search?q=${encodeURIComponent(
-                  internalValue
-                )}`;
+                if (onEnter) {
+                  onEnter();
+                } else {
+                  window.location.href = `/search?q=${encodeURIComponent(
+                    internalValue
+                  )}`;
+                }
               }
               if (e.key === "Escape" && expanded && !isDesktop) {
                 setExpanded(false);
