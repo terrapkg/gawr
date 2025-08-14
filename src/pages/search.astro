@@ -1,0 +1,29 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { SearchBar } from '../components/ui/SearchBar';
+import Navbar from '../components/Navbar.astro';
+import { Combobox } from '../components/ui/Combobox';
+import { getVersions } from '../lib/versions';
+
+const { searchParams } = Astro.url;
+const query = searchParams.get('q') ?? '';
+
+const versions = await getVersions();
+---
+
+<Layout title="Search | Terra Hub" search={query}>
+    <!-- <div class="w-7/12 max-w-[calc(100%-2rem)] py-6 mx-auto flex flex-col"> -->
+    <div class="mx-auto max-w-6xl px-2 sm:px-6 lg:px-8">
+        {query === ''
+          ? <h1 class="text-2xl font-bold pb-4">Search</h1>
+          : <h1 class="text-2xl font-bold pb-4">Search Results for "{query}"</h1>
+        }
+
+        <div class="flex flex-row py-4 gap-8 justify-center">
+            <Combobox client:load values={versions} defaultValue={1} group='versions' />
+            <Combobox client:load values={[{label: "x86_64", value: "x86_64"}, {label: "aarch64", value: "aarch64"}]} group='architectures' />
+            <!-- <Combobox client:load values={[{label: "Alpha", value: "alpha"}, {label: "Beta", value: "beta"}]} group='releases' /> -->
+        </div>
+
+    </div>
+</Layout>
