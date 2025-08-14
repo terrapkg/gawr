@@ -1,54 +1,42 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
 import { PkgCount } from '../components/PkgCount.tsx';
+import Card from '../components/Card.astro';
 ---
 
 <Layout title="Terra Hub">
-	<main>
-		<h1>Welcome to Terra</h1>
-		<h2 class="text-4xl text-center">
-			The <PkgCount client:load /> packages Fedora doesn’t ship.
-		</h2>
-		<p class="instructions">
-			To get started, open the directory <code>src/pages</code> in your project.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-		</p>
-		<ul role="list" class="link-card-grid">
-			<Card
-				href="https://docs.astro.build/"
-				title="Documentation"
-				body="Learn how Astro works and explore the official API docs."
-			/>
-			<Card
-				href="https://astro.build/integrations/"
-				title="Integrations"
-				body="Supercharge your project with new frameworks and libraries."
-			/>
-			<Card
-				href="https://astro.build/themes/"
-				title="Themes"
-				body="Explore a galaxy of community-built starter themes."
-			/>
-			<Card
-				href="https://astro.build/chat/"
-				title="Community"
-				body="Come say hi to our amazing Discord community. ❤️"
-			/>
-		</ul>
-	</main>
+	<h1>Welcome to Terra</h1>
+	<h2>
+		The <PkgCount client:load /> packages Fedora doesn’t ship.
+	</h2>
+	<p class="description">
+	A repository for all the software you need. With Terra, you can install the latest packages knowing that quality and security are assured. Terra is also a great way to distribute your software on Fedora and its derivatives.		</p>
+    <div class="grid gap-4 justify-center px-20 grid-cols-3">
+        <Card title="Modern">
+            Terra is built on the Andaman toolchain, our modern meta
+            buildsystem for packages. This simplifies the process of
+            maintaining packages, even at a large scale. Written in Rust,
+            it is blazing fast and easy to use.
+        </Card>
+        <Card title="Current">
+            Tired of waiting for updates? Us too. Packages on Terra are automatically updated as soon as they are released upstream, on a 30 minute interval. And for those living on the edge, we offer nightly packages as well.
+        </Card>
+        <Card title="Quality">
+            Packages on Terra are built by a team of experienced maintainers. Additionally, package submissions are carefully vetted and assessed against our guidelines. This ensures that a high quality of packages is maintained.
+        </Card>
+        <Card title="Transparent">
+            Long gone are the days of external buildsystems and scattered repos. All package sources are available within a single repository. This makes it easy to track down issues and report bugs. Additionally, all build jobs are publicly viewable on GitHub Actions.
+        </Card>
+        <Card title="Ease of Use">
+            For users, Terra is as easy to use as any other repository. And for developers, Terra is a breeze to work with. We work directly with other projects to meet their needs and make Terra as seamless as possible.
+        </Card>
+        <Card title="Secure">
+            All packages on Terra are built in a secure environment maintained by the Fyra Labs team. Through our modern tooling, transparent infrastructure, and careful review process, we ensure that all packages are safe to use.
+        </Card>
+    </div>
 </Layout>
 
 <style>
-	main {
-		margin: auto;
-		padding: 1rem;
-		width: 800px;
-		max-width: calc(100% - 2rem);
-		/* color: white; */
-		font-size: 20px;
-		line-height: 1.6;
-	}
 	.astro-a {
 		position: absolute;
 		top: -32px;
@@ -64,36 +52,25 @@ import { PkgCount } from '../components/PkgCount.tsx';
 		line-height: 1;
 		text-align: center;
 		margin-bottom: .7em;
+		margin-top: 1em;
 	}
 	h2 {
-		font-size: 2rem;
+		font-size: 3rem;
 		font-weight: 700;
 		line-height: 1;
 		text-align: center;
 		margin-bottom: .5em;
 	}
-	.instructions {
-		margin-bottom: 2rem;
-		border: 1px solid rgba(var(--accent-light), 25%);
-		background: linear-gradient(rgba(var(--accent-dark), 66%), rgba(var(--accent-dark), 33%));
+	.description {
+		margin: 0 auto 2rem auto;
 		padding: 1.5rem;
+		width: 780px;
+		max-width: calc(100% - 2rem);
+		border: 1px solid rgba(var(--accent-light), 0.25);
 		border-radius: 8px;
-	}
-	.instructions code {
-		font-size: 0.8em;
-		font-weight: bold;
-		background: rgba(var(--accent-light), 12%);
-		/* color: rgb(var(--accent-light)); */
-		border-radius: 4px;
-		padding: 0.3em 0.4em;
-	}
-	.instructions strong {
-		/* color: rgb(var(--accent-light)); */
-	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 2rem;
-		padding: 0;
+		background: linear-gradient(rgba(var(--accent-dark), 0.66), rgba(var(--accent-dark), 0.33));
+		text-align: center;
+		font-size: 20px;
+		line-height: 1.6;
 	}
 </style>
