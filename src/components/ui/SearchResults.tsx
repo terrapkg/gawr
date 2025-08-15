@@ -21,7 +21,7 @@ const baseUrl =
     ? "http://localhost:8000"
     : "https://gura.fyralabs.com";
 
-export const SearchResults: React.FC<SearchResultsProps> = ({
+  export const SearchResults: React.FC<SearchResultsProps> = ({
   query,
   repo,
   arch,

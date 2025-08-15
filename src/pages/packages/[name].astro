@@ -3,11 +3,66 @@ import Layout from "@/layouts/Layout.astro";
 
 const { name } = Astro.params;
 
-const response = await fetch(`http://127.0.0.1:8000/api/packages/name/${name}`)
-// FIXME: Error Handle this (404)
-const data = await response.json() as Package;
+let pkg: Package | null = null;
+let error: string | null = null;
+
+try {
+  const response = await fetch(`http://127.0.0.1:8000/api/packages/name/${name}`);
+  if (!response.ok) {
+    error = `Failed to fetch package: ${response.status} ${response.statusText}`;
+  } else {
+    pkg = await response.json() as Package;
+  }
+} catch (e) {
+  error = `Error fetching package: ${e instanceof Error ? e.message : String(e)}`;
+}
 ---
 
-<Layout title=`${name}`>
-    <p>{data.name} as {data.version}</p>
+
+<Layout title={`${name} | Terra`}>
+  {error ? (
+    <p>{error}</p>
+  ) : pkg && (
+    <div class="max-w-[700px] mx-auto">
+      <h1 class="font-mono font-bold text-4xl">{pkg.name}</h1>
+      <h3 class="font-bold text-xl">{pkg.summary}</h3>
+      <hr class="my-4" />
+      <div class="flex gap-8">
+          <div class="flex items-center pb-4">
+          <div>
+            <strong>Version:</strong> {pkg.version}
+          </div>
+          <div class="mx-4 text-gray-300">|</div>
+          <div>
+            <strong>Packager:</strong> {pkg.packager}
+          </div>
+          <div class="mx-4 text-gray-300">|</div>
+          <div>
+            <strong>Category:</strong> {pkg.category}
+          </div>
+        </div>
+      </div>
+      <div class="flex gap-8 items-start">
+        <div class="flex-1 flex items-center">
+          <code class="bg-white border border-gray-300 dark:bg-gray-900 dark:border-gray-700 px-4 py-2 rounded-lg text-[1.1em]">sudo dnf install {pkg.name}</code>
+          <button
+            class="ml-2 px-3 py-2 text-base cursor-pointer rounded-md bg-black text-white hover:bg-gray-800 active:bg-gray-900 dark:bg-slate-200 dark:text-black dark:hover:bg-gray-200 dark:active:bg-gray-300"
+            onclick={`navigator.clipboard.writeText('sudo dnf in ${pkg.name}')`}
+            aria-label="Copy install command"
+          >
+            Copy
+          </button>
+        </div>
+        <div>
+          <button
+            class="bg-sky-700 text-white rounded-lg px-6 py-2 text-base cursor-pointer hover:bg-sky-800 dark:hover:bg-sky-600"
+            onclick="window.open('https://developer.fyralabs.com/terra/installing', '_blank')"
+          >
+            Get Terra
+          </button>
+        </div>
+      </div>
+    </div>
+  )}
 </Layout>
+</rewrite_this>

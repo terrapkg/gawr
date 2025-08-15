@@ -42,7 +42,7 @@ export function DarkModeToggle() {
   return (
     <button
       type="button"
-      className="ml-4 px-5 py-4 sm:px-3 sm:py-2 rounded-md text-lg sm:text-sm font-medium transition-all shadow-md dark:bg-zinc-800 dark:text-white dark:hover:bg-zinc-700 focus:outline-none focus:ring-2 focus:ring-zinc-500 bg-zinc-100 hover:bg-zinc-300"
+      className="ml-4 px-5 py-4 sm:px-3 sm:py-2 rounded-md text-lg sm:text-sm font-medium transition-all shadow-md dark:bg-zinc-800 dark:text-white dark:hover:bg-zinc-700 focus:outline-none focus:ring-2 focus:ring-accent bg-white hover:bg-zinc-300"
       aria-label="Toggle dark mode"
       title="Toggle dark mode"
       onClick={handleToggle}

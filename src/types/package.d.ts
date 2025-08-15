@@ -7,6 +7,8 @@ interface PackageType {
     summary: string,
     url: string,
     version: string,
+    packager: string,
+    category: string,
 }
 
 type Package = PackageType & GuraError;
