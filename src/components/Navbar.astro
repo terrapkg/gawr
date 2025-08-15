@@ -30,7 +30,7 @@ let versions: CbValue[] = await getVersions();
             </a>
             <!-- Centered SearchBar component -->
             <div class="sm:flex-1 sm:flex sm:justify-center items-center px-4">
-                {(search ?? true) && <SearchBar client:only="react" />}
+                {(search ?? true) && <SearchBar client:load />}
             </div>
             <div class="flex ml-auto place-items-stretch items-center">
                 <div class="flex space-x-4 items-center h-full">

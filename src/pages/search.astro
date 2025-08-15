@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { SearchPanel } from '../components/ui/SearchPanel';
+import { SearchResults } from '../components/ui/SearchResults';
 import { getVersions } from '../lib/versions';
 
 const { searchParams } = Astro.url;
@@ -19,4 +20,5 @@ const versions = await getVersions();
         : <h1 class="text-4xl font-bold flex justify-center pb-10">Search Results for "{query}"</h1>
         }
     <SearchPanel versions={versions} initialQuery={query} initialRepo={repo} initialArch={arch} client:only="react" />
+    {query && <SearchResults client:only="react" query={query} repo={repo} arch={arch} />}
 </Layout>
